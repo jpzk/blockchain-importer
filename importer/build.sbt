@@ -22,7 +22,6 @@ lazy val extractor = (project in file("."))
         oldStrategy(x)
     }
     )
-  )
   .enablePlugins(DockerPlugin)
   .settings(buildOptions in docker := BuildOptions(cache = false))
   .settings(
@@ -57,7 +56,7 @@ lazy val extractor = (project in file("."))
     )
   )
   .settings(
-    libraryDependencies ++= avro ++ testDeps ++ kafka ++ log ++ slick ++ cats ++ gelfLog
+    libraryDependencies ++= avro ++ testDeps ++ kafka ++ log ++ slick ++ cats ++ rpc
   )
 
 val workaround = {
@@ -65,6 +64,7 @@ val workaround = {
   ()
 }
 
+lazy val rpc =  Seq("com.madewithtea" %% "blockchain-rpc" % "2.5.2")
 lazy val avro = Seq(
   "com.sksamuel.avro4s" %% "avro4s-core" % "3.0.1",
   "com.sksamuel.avro4s" %% "avro4s-macros" % "2.0.4"
@@ -95,9 +95,6 @@ lazy val log = Seq(
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
 )
 
-lazy val gelfLog = Seq(
-  "biz.paluch.logging" % "logstash-gelf" % "1.13.0"
-)
 
 lazy val cats = Seq(
   "org.typelevel" %% "cats-effect" % "2.0.0"

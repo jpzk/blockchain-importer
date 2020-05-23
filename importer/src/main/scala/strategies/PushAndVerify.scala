@@ -16,7 +16,6 @@
   */
 package com.madewithtea.blockchainimporter.strategies
 
-import com.madewithtea.blockchainimporter.common.Metrics
 import cats.effect.IO
 import cats.effect._
 

@@ -14,9 +14,9 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package com.madewithtea.blockchainimporter.bitcoin.extractors
+package com.madewithtea.blockchainimporter.strategies
 
-import om.madewithtea.blockchainimporter.bitcoin.BlockData
+import com.madewithtea.blockchainimporter.BlockData
 import org.scalatest.{FlatSpec, Matchers}
 import scala.concurrent.duration._
 

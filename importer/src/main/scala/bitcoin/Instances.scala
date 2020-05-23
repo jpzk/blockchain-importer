@@ -29,17 +29,16 @@ import com.madewithtea.blockchainrpc.bitcoin.Protocol.{
 
 import com.madewithtea.blockchainrpc.Config
 import com.madewithtea.blockchainrpc.{RPCClient, Config, ZeroMQ}
-import com.madewithtea.protocol.bitcoin.importer._
-import com.madewithtea.streams.common.HexTools._
-import com.madewithtea.streams.common.Context
+import com.madewithtea.blockchainimporter.HexTools._
+import com.madewithtea.blockchainimporter.Context
 import org.http4s.client.Client
 
 import scala.util.Try
 import scala.concurrent.ExecutionContext
 
-import com.madewithtea.streams.extractor.Blockchain
-import com.madewithtea.streams.extractor.RPC
-import com.madewithtea.streams.extractor.BlockData
+import com.madewithtea.blockchainimporter.Blockchain
+import com.madewithtea.blockchainimporter.RPC
+import com.madewithtea.blockchainimporter.BlockData
 
 object Instances {
 

@@ -18,7 +18,7 @@ package com.madewithtea.blockchainimporter.bitcoin
 
 import cats.effect.IO
 import com.sksamuel.avro4s.RecordFormat
-
+import com.madewithtea.blockchainimporter.HexTools._
 import com.madewithtea.blockchainrpc.bitcoin.Protocol.{
   BlockResponse,
   TransactionResponse,
@@ -27,13 +27,13 @@ import com.madewithtea.blockchainrpc.bitcoin.Protocol.{
 }
 
 import com.madewithtea.blockchainrpc.{RPCClient, Config, ZeroMQ}
-import com.madewithtea.protocol.bitcoin.extractor._
-import com.madewithtea.streams.common.HexTools._
+import com.madewithtea.blockchainimporter.bitcoin._
+import com.madewithtea.blockchainimporter.HexTools._
 import org.http4s.client.Client
 
 import scala.util.Try
 
-import com.madewithtea.streams.extractor.{RPC, BlockData}
+import com.madewithtea.blockchainimporter.{RPC, BlockData}
 
 object Codec {
   val blockFmt = RecordFormat[Block]

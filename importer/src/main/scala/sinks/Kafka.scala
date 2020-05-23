@@ -14,7 +14,7 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package com.madewithtea.streams.extractor.sinks
+package com.madewithtea.blockchainimporter.sinks
 
 import java.util.Properties
 
@@ -36,7 +36,7 @@ import org.apache.kafka.common.serialization.LongSerializer
 
 import com.madewithtea.blockchainimporter.{Forward, BlockData}
 import com.madewithtea.blockchainimporter.{Sink}
-import com.madewithtea.blockchainimporter.common.Context
+import com.madewithtea.blockchainimporter.Context
 
 class KafkaSink(blockchain: String, brokers: String, schemaRegistry: String)
     extends Forward[Sink.Kafka] with LazyLogging

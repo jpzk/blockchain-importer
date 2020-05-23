@@ -19,7 +19,7 @@ package com.madewithtea.blockchainimporter.sinks
 import cats.effect.Resource
 import cats.effect.IO
 import com.madewithtea.blockchainimporter.{BlockData, Forward, Sink}
-import com.madewithtea.blockchainimporter.common.Context
+import com.madewithtea.blockchainimporter.Context
 import com.typesafe.scalalogging.LazyLogging
 
 object Instances {

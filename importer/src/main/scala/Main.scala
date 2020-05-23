@@ -25,42 +25,36 @@ import scala.concurrent.duration.FiniteDuration
 import com.typesafe.scalalogging.LazyLogging
 
 import com.madewithtea.blockchainrpc.{Config, RPCClient}
-import com.madewithtea.blockchainimporter.common._
-import com.madewithtea.blockchainimporter.extractors.Utils._
-import com.madewithtea.blockchainimporter.common.PagerDuty
 
 import cats.implicits._
 import sinks.Instances._
 import persistence.Instances._
-import extractors.Instances._
+import strategies.Instances._
 import bitcoin.Instances._
+
+import strategies.Utils._
 
 object Main extends IOApp with LazyLogging {
   implicit val ec = global
-  val pdName = Context.orThrow("PD_NAME")
 
   def run(args: List[String]): IO[ExitCode] = {
-    val metrics = new GraphiteMetrics(
-      Context.orThrow("METRICS_PREFIX"),
-      Some(Context.metrics)
-    )
 
     val config = (Env.blockchain, Env.mode, Env.environment)
     logger.info(s"Running extractor for ${config}")
     val l = (Env.blockchain, Env.mode, Env.environment) match {
       // bitcoin
       case (b: Blockchain.Bitcoin, m: Mode.Lagging, e: Environment.Local) =>
-        loop(b, m, metrics, Resources.local[Blockchain.Bitcoin]()) 
+        loop(b, m,  Resources.local[Blockchain.Bitcoin]())
       case (b: Blockchain.Bitcoin, m: Mode.Push, e: Environment.Local) =>
-        loop(b, m, metrics, Resources.local[Blockchain.Bitcoin]()) 
+        loop(b, m,  Resources.local[Blockchain.Bitcoin]())
       case (b: Blockchain.Bitcoin, m: Mode.PushAndVerify, e: Environment.Local) =>
-        loop(b, m, metrics, Resources.local[Blockchain.Bitcoin]()) 
+        loop(b, m,  Resources.local[Blockchain.Bitcoin]())
       case (b: Blockchain.Bitcoin, m: Mode.Lagging, e: Environment.Production) =>
-        loop(b, m, metrics, Resources.production[Blockchain.Bitcoin]()) 
+        loop(b, m,  Resources.production[Blockchain.Bitcoin]())
       case (b: Blockchain.Bitcoin, m: Mode.Push, e: Environment.Production) =>
-        loop(b, m, metrics, Resources.production[Blockchain.Bitcoin]()) 
+        loop(b, m,  Resources.production[Blockchain.Bitcoin]())
       case (b: Blockchain.Bitcoin, m: Mode.PushAndVerify, e: Environment.Production) =>
-        loop(b, m, metrics, Resources.production[Blockchain.Bitcoin]()) 
+        loop(b, m, Resources.production[Blockchain.Bitcoin]())
       case _ => throw new Exception("Could not instantiate configuration")
     }
 
@@ -69,13 +63,6 @@ object Main extends IOApp with LazyLogging {
         case ex: Exception =>
           for {
             _ <- IO(logger.error(ex.getMessage()))
-            _ <- IO(
-              PagerDuty.alert(
-                PagerDuty.Error,
-                pdName,
-                s"${pdName} ${config}: ${ex.getMessage()}"
-              )
-            )
           } yield ExitCode(-1)
       }
   }

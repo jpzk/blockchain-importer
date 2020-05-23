@@ -24,7 +24,7 @@ import cats.effect.{ContextShift, IO, Resource}
 
 import com.madewithtea.blockchainimporter.Persist
 import com.madewithtea.blockchainimporter.Persistence
-import com.madewithtea.blockchainimporter.common.Context
+import com.madewithtea.blockchainimporter.Context
 
 case class PostgresSQLConfig(
     host: String,

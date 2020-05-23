@@ -20,9 +20,9 @@ import java.nio.ByteBuffer
 
 import com.sksamuel.avro4s.RecordFormat
 import com.madewithtea.blockchainimporter.BlockData
+import com.madewithtea.blockchainimporter.HexTools._
 import com.madewithtea.blockchainrpc.bitcoin.Protocol
 import com.madewithtea.blockchainrpc.bitcoin.Protocol._
-import com.madewithtea.blockchainrpc.common.HexTools._
 import org.apache.avro.generic.GenericRecord
 import org.apache.avro.util.Utf8
 import org.scalatest.{FlatSpec, Matchers}

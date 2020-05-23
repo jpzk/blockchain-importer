@@ -23,9 +23,8 @@ import cats.effect.Resource
 import org.apache.avro.generic.GenericRecord
 import scala.concurrent.duration.FiniteDuration
 
-import com.madewithtea.blockchainimporter.common.Metrics
-import com.madewithtea.blockchainimporter.common.Context
-import com.madewithtea.blockchainimporter.extractors._
+import com.madewithtea.blockchainimporter._
+import com.madewithtea.blockchainimporter.strategies._
 
 case class BlockData(
     blockNumber: Long,
@@ -92,4 +91,8 @@ trait Backend[A <: Blockchain, B <: Sink, C <: Persistence] {
   val rpc: RPC[A]
   val forward: Forward[B]
   val persist: Persist[C]
+}
+
+trait HasBlockNumber {
+  val blockNumber: Long
 }

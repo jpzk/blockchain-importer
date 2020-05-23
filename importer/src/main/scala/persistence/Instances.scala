@@ -19,7 +19,7 @@ package com.madewithtea.blockchainimporter.persistence
 import cats.effect.Resource
 import cats.effect.{IO, ContextShift}
 import com.madewithtea.blockchainimporter._
-import com.madewithtea.blockchainimporter.common.Context
+import com.madewithtea.blockchainimporter.Context
 import com.madewithtea.blockchainimporter.Persistence.Postgres
 
 object Instances {
