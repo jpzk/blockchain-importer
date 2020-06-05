@@ -36,10 +36,6 @@ lazy val extractor = (project in file("."))
       new Dockerfile {
         from("anapsix/alpine-java")
         add(artifact, artifactTargetPath)
-        copy(
-          baseDirectory(_ / "src" / "main" / "resources" / "logback.xml").value,
-          "/src/main/resources/"
-        )
         entryPoint(
           "java",
           "-Dlogback.configurationFile=/config/logback.xml",
