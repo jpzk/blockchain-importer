@@ -4,12 +4,13 @@ services:
 
   importer:
     image: com.madewithtea/blockchainimporter:1.0.0
+    restart: always
     environment:
       BLOCKCHAIN: "bitcoin"
       MODE: "lagging"
       LAG_BEHIND: "3"
       ENVIRONMENT: "production"
-      POLL_TIME_MS: "1000"
+      POLL_TIME_MS: "1"
       BLOCKCHAIN_RPC_HOSTS: "176.9.61.19"
       BLOCKCHAIN_RPC_PORT: "8442"
       BLOCKCHAIN_RPC_USERNAME: "rpcuser"
@@ -33,6 +34,8 @@ services:
       POSTGRES_PASSWORD: importer
     volumes:
     - ./minimal/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
   adminer:
     image: adminer
@@ -43,6 +46,7 @@ services:
   kafka-schema-registry:
     image: confluentinc/cp-schema-registry:5.5.0
     hostname: kafka-schema-registry
+    restart: always
     ports:
       - "8081:8081"
     environment:
