@@ -36,9 +36,13 @@ lazy val extractor = (project in file("."))
       new Dockerfile {
         from("anapsix/alpine-java")
         add(artifact, artifactTargetPath)
+        copy(
+          baseDirectory(_ / "src" / "main" / "resources" / "logback.xml").value,
+          file("/logback.xml")
+        )
         entryPoint(
           "java",
-          "-Dlogback.configurationFile=/config/logback.xml",
+          "-Dlogback.configurationFile=/logback.xml",
           "-cp",
           artifactTargetPath,
           "com.madewithtea.blockchainimporter.Main"

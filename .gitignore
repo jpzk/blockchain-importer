@@ -1,2 +1,4 @@
 .idea
-
+docker/minimal
+importer/project
+importer/target
