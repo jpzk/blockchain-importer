@@ -7,6 +7,12 @@
 
 **Blockchain-importer is the first-of-its-kind open-source software that enables typesafe agnostic real-time streaming of Blockchain data into different sinks and primiarily into the Kafka ecosystem** (in Avro and from here leveraging fault tolerance, exactly-once). It *currently supports Bitcoin*, but any block/transaction-based ledger can be added easily. It is therefore very different from the data science use case of Python/SQL-based analytics in AWS/GCP where other projects are more suited such as [bitcoin-etl](https://github.com/blockchain-etl/bitcoin-etl), [ethereum-etl](https://github.com/blockchain-etl/ethereum-etl). If you need to just read from the full node in a typesafe way, have a look at the [blockchain-rpc](https://github.com/jpzk/blockchain-rpc) project.
 
+## Quickstart
+```
+    # vim docker/minimal.yml (modify RPC settings)
+    # docker-compose -f docker/minimal.yml up
+```
+
 ## Modes
 
 Blockchain-importer has two distinct modes **lagging** and **push**, **pushverify** which allows a consumer to select the type of subscription that is adequate for the existing streaming infrastructure. The lagging mode is widely used in lots of different Blockchain data companies and it maintains a distance between the current processed block and the tip of the chain. This approach ensures that wrong blocks due to blockchain reorganizations are not propagated downstream. The **push** mode is reading from the tip of the chain and is propagating the last mined block. This mode does not guarantee that only correct blocks are forwarded. Therefore, **pushverify** has been introduced which additionaly checks if there was a reorganization and replays the missed canonical blocks. 
