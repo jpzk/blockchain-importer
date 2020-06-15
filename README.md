@@ -11,6 +11,8 @@
 
 Blockchain-importer has two distinct modes **lagging** and **push**, **pushverify** which allows a consumer to select the type of subscription that is adequate for the existing streaming infrastructure. The lagging mode is widely used in lots of different Blockchain data companies and it maintains a distance between the current processed block and the tip of the chain. This approach ensures that wrong blocks due to blockchain reorganizations are not propagated downstream. The **push** mode is reading from the tip of the chain and is propagating the last mined block. This mode does not guarantee that only correct blocks are forwarded. Therefore, **pushverify** has been introduced which additionaly checks if there was a reorganization and replays the missed canonical blocks. 
 
+### Modes cheatsheet
+
 | mode | description                                                | use cases |
 | -------------------------- | ---------------------------------------------------------- | ------------------------------------------ |
 | lagging | polling-based: maintains a distance between the current processed block and the tip of the chain | high-latency, store in data lake |
