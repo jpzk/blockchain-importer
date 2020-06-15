@@ -119,9 +119,9 @@ class ExtractorConfigTable(tag: Tag)
 
 class BlocksHashesTable(tag: Tag)
     extends Table[(String, Long, String)](tag, "block_hashes") {
-  def name = column[String]("name", O.PrimaryKey)
+  def name = column[String]("name")
 
-  def height = column[Long]("height", O.PrimaryKey)
+  def height = column[Long]("height")
 
   def hash = column[String]("hash")
 
