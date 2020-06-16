@@ -1,5 +1,5 @@
 lazy val commonSettings = Seq(
-  organization := "com.madewithtea",
+  organization := "jpzk",
   version := "1.0.0",
   scalaVersion := "2.12.10",
   description := "blockchainimporter"

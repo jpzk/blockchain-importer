@@ -1,5 +1,5 @@
 # blockchain-importer
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/202ed1ef51524b749560c0ffd78400f7)](https://www.codacy.com/manual/jpzk/blockchain-importer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jpzk/blockchain-rpc&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/202ed1ef51524b749560c0ffd78400f7)](https://www.codacy.com/manual/jpzk/blockchain-importer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jpzk/blockchain-importer&amp;utm_campaign=Badge_Grade)
 [![License](http://img.shields.io/:license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt) [![GitHub stars](https://img.shields.io/github/stars/jpzk/blockchain-importer.svg?style=flat)](https://github.com/jpzk/bitcoin-importer/stargazers) 
 [![Maven Central](https://img.shields.io/maven-central/v/com.madewithtea/blockchain-importer_2.13.svg)](https://search.maven.org/search?q=com.madewithtea%20blockchain-importer) <img src="https://typelevel.org/cats/img/cats-badge.svg" height="40px" align="right" alt="Cats friendly" /></a>
 
@@ -15,7 +15,9 @@
 
 ## Modes
 
-Blockchain-importer has two distinct modes **lagging** and **push**, **pushverify** which allows a consumer to select the type of subscription that is adequate for the existing streaming infrastructure. The lagging mode is widely used in lots of different Blockchain data companies and it maintains a distance between the current processed block and the tip of the chain. This approach ensures that wrong blocks due to blockchain reorganizations are not propagated downstream. The **push** mode is reading from the tip of the chain and is propagating the last mined block. This mode does not guarantee that only correct blocks are forwarded. Therefore, **pushverify** has been introduced which additionaly checks if there was a reorganization and replays the missed canonical blocks. 
+Blockchain-importer has two distinct modes **lagging** and **push**, **pushverify** which allows a consumer to select the type of subscription that is adequate for the existing streaming infrastructure. 
+
+The lagging mode is widely used in lots of different Blockchain data companies and it maintains a distance between the current processed block and the tip of the chain. This approach ensures that wrong blocks due to blockchain reorganizations are not propagated downstream. The **push** mode is reading from the tip of the chain and is propagating the last mined block. This mode does not guarantee that only correct blocks are forwarded. Therefore, **pushverify** has been introduced which additionaly checks if there was a reorganization and replays the missed canonical blocks. 
 
 ### Modes cheatsheet
 
@@ -39,6 +41,13 @@ For fast experimentation and without any compilation (no-code) or installing nec
 1. Bitcoin full node with txindex=1 
 2. Kafka ecosystem, brokers, zookeeper, schema-registry 
 3. For storing the current processed block height and block hashes (used for *push verify* mode) the importer needs a PostgresSQL database
+
+## Building your own Docker image
+
+```
+    $ vim build.sbt (change organization name, top of file)
+    $ sbt docker
+```
 
 ## Environment flags
 
