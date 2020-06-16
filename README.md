@@ -1,11 +1,15 @@
 # blockchain-importer
+
+[![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-green)](https://gitter.im/blockchain-importer)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/202ed1ef51524b749560c0ffd78400f7)](https://www.codacy.com/manual/jpzk/blockchain-importer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jpzk/blockchain-importer&amp;utm_campaign=Badge_Grade)
 [![License](http://img.shields.io/:license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt) [![GitHub stars](https://img.shields.io/github/stars/jpzk/blockchain-importer.svg?style=flat)](https://github.com/jpzk/bitcoin-importer/stargazers) 
-[![Maven Central](https://img.shields.io/maven-central/v/com.madewithtea/blockchain-importer_2.13.svg)](https://search.maven.org/search?q=com.madewithtea%20blockchain-importer) <img src="https://typelevel.org/cats/img/cats-badge.svg" height="40px" align="right" alt="Cats friendly" /></a>
+<img src="https://typelevel.org/cats/img/cats-badge.svg" height="40px" align="right" alt="Cats friendly" /></a>
 
 *TLDR: Functional, typesafe, well-tested and composable streaming blockchain importer, drop-in solution for and leverages Kafka ecosystem. Aims for no-code and great developer experience*. 
 
 **Blockchain-importer is the first-of-its-kind open-source software that enables typesafe agnostic real-time streaming of Blockchain data into different sinks and primiarily into the Kafka ecosystem** (in Avro and from here leveraging fault tolerance, exactly-once). It *currently supports Bitcoin*, but any block/transaction-based ledger can be added easily. It is therefore very different from the data science use case of Python/SQL-based analytics in AWS/GCP where other projects are more suited such as [bitcoin-etl](https://github.com/blockchain-etl/bitcoin-etl), [ethereum-etl](https://github.com/blockchain-etl/ethereum-etl). If you need to just read from the full node in a typesafe way, have a look at the [blockchain-rpc](https://github.com/jpzk/blockchain-rpc) project.
+
+For any questions or support please visit our [gitter channel](https://gitter.im/blockchain-importer).
 
 ## Quickstart
 ```

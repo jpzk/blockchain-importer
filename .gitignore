@@ -1,5 +1,5 @@
 .idea
 .metals
 docker/minimal
-importer/project
-importer/target
+project/project
+target/
