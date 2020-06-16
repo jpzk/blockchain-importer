@@ -53,6 +53,10 @@ For fast experimentation and without any compilation (no-code) or installing nec
     $ sbt docker
 ```
 
+## Avro Protocol
+
+The Bitcoin protocol in blockchain-importer is specified in Avro as Block, Coinbase, Transaction, Input, Output and Script. The definition is [encoded as case classes in Scala using avro4s](https://github.com/jpzk/blockchain-importer/blob/master/src/main/scala/bitcoin/Bitcoin.scala).
+
 ## Environment flags
 
 | variable                   | description                                                | type                                       |
