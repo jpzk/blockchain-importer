@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   importer:
-    image: com.madewithtea/blockchainimporter:1.0.0
+    image: jpzk/blockchainimporter:1.0.0
     restart: always
     environment:
       BLOCKCHAIN: "bitcoin"
