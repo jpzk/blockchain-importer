@@ -23,10 +23,10 @@ The following commands will create a docker container setup with a Kafka broker,
 ## Table of Contents
 
 1. [Modes](#modes)
-3. [Requirements for production](#requirements-for-production)
-4. [Avro Protocol](#avro-protocol)
+2. [Avro Protocol](#avro-protocol)
+3. [Configuration](#configuration)
+4. [Running a full node](#running-a-full-node)
 5. [Build your own Docker image](#building-your-own-docker-image)
-6. [Environment flags](#environment-flags)
 
 ## Modes
 
@@ -42,31 +42,11 @@ The lagging mode is widely used in lots of different Blockchain data companies a
 | push                      | push-based: reads from the tip of the chain, on each new mined block| low-latency, trading with onchain data, ignore reorgs |
 | pushverify                      | like push, but also replays missed out blocks on reorganization | low-latency, mission critical, upsert correct data  |
 
-## Requirements for production
-
-1. Bitcoin full node with txindex=1 
-2. Kafka ecosystem, brokers, zookeeper, schema-registry 
-3. For storing the current processed block height and block hashes (used for *push verify* mode) the importer needs a PostgresSQL database
-
-### Tips for running a full node
-
-* Instead of AWS/GCP use a dedicated server provider, these are much cheaper. 
-* Make sure your **chaindata is on a SSD**. Bootstrapping from genesis block is much faster.
-* Make sure the RPC server is not reachable from the outside and set username/password.
-
 ## Avro Protocol
 
 The Bitcoin protocol in blockchain-importer is specified in Avro as Block, Coinbase, Transaction, Input, Output and Script. The definition is [encoded as case classes in Scala using avro4s](https://github.com/jpzk/blockchain-importer/blob/master/src/main/scala/bitcoin/Bitcoin.scala).
 
-## Building your own Docker image
-
-```
-    $ vim build.sbt (change organization name, top of file)
-    $ sbt docker
-```
-
-
-## Environment flags
+## Configuration 
 
 | variable                   | description                                                | type                                       |
 | -------------------------- | ---------------------------------------------------------- | ------------------------------------------ |
@@ -89,3 +69,17 @@ The Bitcoin protocol in blockchain-importer is specified in Avro as Block, Coinb
 | DB_PASS                    | Postgres password                                          | String                                     |
 | DB_OFFSET_NAME             | Extractor name under which store the offset                | String                                     |
 | IN_MEMORY_OFFSET           | Temporary in-memory blockchain offset when running locally | String                                     |                             | String                                     |
+
+## Running a full node
+
+* Instead of AWS/GCP use a dedicated server provider, these are much cheaper. 
+* Make sure your **chaindata is on a SSD**. Bootstrapping from genesis block is much faster.
+* Make sure the RPC server is not reachable from the outside and set username/password.
+
+## Building your own Docker image
+
+```
+    $ vim build.sbt (change organization name, top of file)
+    $ sbt docker
+```
+
