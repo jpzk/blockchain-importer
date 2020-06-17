@@ -1,6 +1,7 @@
 # blockchain-importer
 
 [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-green)](https://gitter.im/blockchain-importer)
+[![Travis](https://api.travis-ci.org/jpzk/blockchain-importer.svg?branch=master&status=passed)](https://travis-ci.org/github/jpzk/blockchain-importer)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/202ed1ef51524b749560c0ffd78400f7)](https://www.codacy.com/manual/jpzk/blockchain-importer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jpzk/blockchain-importer&amp;utm_campaign=Badge_Grade)
 [![License](http://img.shields.io/:license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt) [![GitHub stars](https://img.shields.io/github/stars/jpzk/blockchain-importer.svg?style=flat)](https://github.com/jpzk/bitcoin-importer/stargazers) 
 <img src="https://typelevel.org/cats/img/cats-badge.svg" height="40px" align="right" alt="Cats friendly" /></a>
