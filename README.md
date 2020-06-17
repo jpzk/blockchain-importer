@@ -18,6 +18,10 @@ For any questions or support please visit our [gitter channel](https://gitter.im
     # docker-compose -f docker/minimal.yml up
 ```
 
+## Table of Contents
+
+1. [Modes](#modes)
+
 ## Modes
 
 Blockchain-importer has two distinct modes **lagging** and **push**, **pushverify** which allows a consumer to select the type of subscription that is adequate for the existing streaming infrastructure. 
