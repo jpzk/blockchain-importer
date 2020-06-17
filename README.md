@@ -23,7 +23,6 @@ The following commands will create a docker container setup with a Kafka broker,
 ## Table of Contents
 
 1. [Modes](#modes)
-2. [Fast Experimentation or Evaluation](#fast-experimentation-or-evaluation)
 3. [Requirements for production](#requirements-for-production)
 4. [Avro Protocol](#avro-protocol)
 5. [Build your own Docker image](#building-your-own-docker-image)
@@ -42,15 +41,6 @@ The lagging mode is widely used in lots of different Blockchain data companies a
 | lagging | polling-based: maintains a distance between the current processed block and the tip of the chain | high-latency, store in data lake |
 | push                      | push-based: reads from the tip of the chain, on each new mined block| low-latency, trading with onchain data, ignore reorgs |
 | pushverify                      | like push, but also replays missed out blocks on reorganization | low-latency, mission critical, upsert correct data  |
-
-## Fast-experimentation or Evaluation
-
-For fast experimentation and without any compilation (no-code) or installing necessary infrastructure (e.g. Kafka, PostgreSQL etc.), we've crafted a [docker-compose](https://docs.docker.com/compose/) file which lets you run everything necessary with one command. It will start ingesting blocks, transactions and scripts into the specified Kafka topics, starting from block 0. Only a bitcoin full node is required, for this you need to modify the [docker/minimal.yml](https://github.com/jpzk/blockchain-importer/blob/master/docker/minimal.yml) file. 
-
-```
-    # vim docker/minimal.yml (modify RPC settings)
-    # docker-compose -f docker/minimal.yml up
-```
 
 ## Requirements for production
 
