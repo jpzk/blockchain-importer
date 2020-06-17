@@ -8,11 +8,13 @@
 
 *TLDR: Functional, typesafe, well-tested and composable streaming blockchain importer, drop-in solution for and leverages Kafka ecosystem. Aims for no-code and great developer experience*. 
 
-**Blockchain-importer is the first-of-its-kind open-source software that enables typesafe agnostic real-time streaming of Blockchain data into different sinks and primiarily into the Kafka ecosystem** (in Avro and from here leveraging fault tolerance, exactly-once). It *currently supports Bitcoin*, but any block/transaction-based ledger can be added easily. It is therefore very different from the data science use case of Python/SQL-based analytics in AWS/GCP where other projects are more suited such as [bitcoin-etl](https://github.com/blockchain-etl/bitcoin-etl), [ethereum-etl](https://github.com/blockchain-etl/ethereum-etl). If you need to just read from the full node in a typesafe way, have a look at the [blockchain-rpc](https://github.com/jpzk/blockchain-rpc) project.
+**Blockchain-importer is the first-of-its-kind open-source software that enables typesafe agnostic real-time streaming of Blockchain data into different sinks and primiarily into the Kafka ecosystem** (in Avro and from here leveraging fault tolerance, exactly-once). It **currently supports Bitcoin**, but any block/transaction-based ledger can be added easily. It is therefore very different from the data science use case of Python/SQL-based analytics in AWS/GCP where other projects are more suited such as [bitcoin-etl](https://github.com/blockchain-etl/bitcoin-etl), [ethereum-etl](https://github.com/blockchain-etl/ethereum-etl). If you need to just read from the full node in a typesafe way, have a look at the [blockchain-rpc](https://github.com/jpzk/blockchain-rpc) project.
 
 For any questions or support please visit our [gitter channel](https://gitter.im/blockchain-importer).
 
 ## Quickstart
+The following commands will create a docker container setup with a Kafka broker, Schema registry, Zookeeper, PostgreSQL and the blockchain-importer. It will start ingesting blocks, transactions and scripts into Kafka topics starting from genesis block. Please change RPC settings in the docker-compose file minimal.yml to point to the RPC server your Bitcoin full node.
+
 ```
     # vim docker/minimal.yml (modify RPC settings)
     # docker-compose -f docker/minimal.yml up
