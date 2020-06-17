@@ -56,6 +56,12 @@ For fast experimentation and without any compilation (no-code) or installing nec
 2. Kafka ecosystem, brokers, zookeeper, schema-registry 
 3. For storing the current processed block height and block hashes (used for *push verify* mode) the importer needs a PostgresSQL database
 
+### Tips for running a full node
+
+* Instead of AWS/GCP use a dedicated server provider, these are much cheaper. 
+* Make sure your **chaindata is on a SSD**. Bootstrapping from genesis block is much faster.
+* Make sure the RPC server is not reachable from the outside and set username/password.
+
 ## Avro Protocol
 
 The Bitcoin protocol in blockchain-importer is specified in Avro as Block, Coinbase, Transaction, Input, Output and Script. The definition is [encoded as case classes in Scala using avro4s](https://github.com/jpzk/blockchain-importer/blob/master/src/main/scala/bitcoin/Bitcoin.scala).
