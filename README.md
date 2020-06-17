@@ -21,6 +21,11 @@ For any questions or support please visit our [gitter channel](https://gitter.im
 ## Table of Contents
 
 1. [Modes](#modes)
+2. [Fast Experimentation or Evaluation](#fast-experimentation-or-evaluation)
+3. [Requirements for production](#requirements-for-production)
+4. [Avro Protocol](#avro-protocol)
+5. [Build your own Docker image](#building-your-own-docker-image)
+6. [Environment flags](#environment-flags)
 
 ## Modes
 
@@ -51,6 +56,10 @@ For fast experimentation and without any compilation (no-code) or installing nec
 2. Kafka ecosystem, brokers, zookeeper, schema-registry 
 3. For storing the current processed block height and block hashes (used for *push verify* mode) the importer needs a PostgresSQL database
 
+## Avro Protocol
+
+The Bitcoin protocol in blockchain-importer is specified in Avro as Block, Coinbase, Transaction, Input, Output and Script. The definition is [encoded as case classes in Scala using avro4s](https://github.com/jpzk/blockchain-importer/blob/master/src/main/scala/bitcoin/Bitcoin.scala).
+
 ## Building your own Docker image
 
 ```
@@ -58,9 +67,6 @@ For fast experimentation and without any compilation (no-code) or installing nec
     $ sbt docker
 ```
 
-## Avro Protocol
-
-The Bitcoin protocol in blockchain-importer is specified in Avro as Block, Coinbase, Transaction, Input, Output and Script. The definition is [encoded as case classes in Scala using avro4s](https://github.com/jpzk/blockchain-importer/blob/master/src/main/scala/bitcoin/Bitcoin.scala).
 
 ## Environment flags
 
