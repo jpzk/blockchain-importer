@@ -1,0 +1,10 @@
+language: scala
+
+jdk:
+  - openjdk11
+
+script:
+  - sbt clean coverage +test coverageReport
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t "066b413f-f08f-49c6-b3ea-11d2ca95a839"
