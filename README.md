@@ -13,7 +13,7 @@
 For any questions or support please visit our [gitter channel](https://gitter.im/blockchain-importer).
 
 ## Quickstart
-The following commands will create a docker container setup with a Kafka broker, Schema registry, Zookeeper, PostgreSQL and the blockchain-importer. It will start ingesting blocks, transactions and scripts into Kafka topics starting from genesis block. Please change RPC settings in the docker-compose file minimal.yml to point to the RPC server your Bitcoin full node.
+The following commands will create a docker container setup with a Kafka broker, Schema registry, Zookeeper, PostgreSQL and the blockchain-importer. It will start ingesting blocks, transactions and scripts into Kafka topics starting from genesis block. Please change RPC settings in the docker-compose file minimal.yml to point to the RPC server your Bitcoin full node (with txindex=1 in config).
 
 ```
     # vim docker/minimal.yml (modify RPC settings)
